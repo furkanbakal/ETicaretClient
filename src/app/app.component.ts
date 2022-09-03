@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var $: any;   //Burada juery'i tanımladık. Burada yapılan tanım ile tüm componentlerde kullanılabilir.
 
 @Component({
   selector: 'app-root',
@@ -8,3 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ETicaretClient';
 }
+
+// $(document).ready(() => {
+//   alert('asd');
+// })
