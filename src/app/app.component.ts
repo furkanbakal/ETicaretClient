@@ -12,4 +12,6 @@ export class AppComponent {
   title = 'ETicaretClient';
 }
 
-
+$.get("https://localhost:7282/api/products", data =>{
+  console.log(data);
+});
