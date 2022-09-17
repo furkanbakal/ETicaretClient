@@ -7,6 +7,7 @@ import { ListProduct } from 'src/app/contracts/list_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
+declare var $: any;
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,7 @@ export class ListComponent extends BaseComponent implements OnInit {
               private alertifyService: AlertifyService) {
                 super(spinner);
                }
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate', 'edit','delete'];
   dataSource: MatTableDataSource<ListProduct> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -47,4 +48,5 @@ export class ListComponent extends BaseComponent implements OnInit {
   async pageChanged() {
     await this.getProducts();
   }
+
 }
