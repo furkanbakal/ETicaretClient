@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { CreateProduct } from 'src/app/contracts/create_product';
@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/services/common/models/product.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent extends BaseComponent implements OnInit {
+
+  @Output() createdProduct: EventEmitter<CreateProduct> = new EventEmitter();
 
   constructor(spinner: NgxSpinnerService,
               private productService: ProductService,
@@ -37,7 +39,8 @@ export class CreateComponent extends BaseComponent implements OnInit {
         dismissOthers: true,
         messageType: MessageType.Success,
         position: Position.TopRight
-      })
+      });
+      this.createdProduct.emit(create_product);
     }, errrorMessage => {
       this.alertify.message(errrorMessage, {
         dismissOthers: true,
